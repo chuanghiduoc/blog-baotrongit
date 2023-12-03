@@ -7,6 +7,7 @@ import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 // import { jwtConstants } from './constants';
 import { jwtConfig } from './jwt-config';
+import { RolesGuard } from './role/role.guard';
 
 @Module({
   imports: [UsersModule, JwtModule.register(jwtConfig)],
@@ -15,6 +16,10 @@ import { jwtConfig } from './jwt-config';
     {
       provide: APP_GUARD,
       useClass: AuthGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
     },
   ],
   controllers: [AuthController],

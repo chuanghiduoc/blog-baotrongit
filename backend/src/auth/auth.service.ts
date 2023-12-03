@@ -13,7 +13,7 @@ export class AuthService {
   async signIn(username: string, password: string) {
     const user = await this.usersService.findOne(username);
     if (!user) {
-      throw new UnauthorizedException('Thông tin đăng nhập không hợp lệ.');
+      throw new UnauthorizedException('Không tồn tại username.');
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);

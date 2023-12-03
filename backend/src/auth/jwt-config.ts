@@ -4,5 +4,5 @@ import { jwtConstants } from './constants';
 export const jwtConfig: JwtModuleOptions = {
   global: true,
   secret: jwtConstants.secret,
-  signOptions: { expiresIn: '600s' },
+  signOptions: { expiresIn: '1h' },
 };

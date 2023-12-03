@@ -24,6 +24,10 @@ export class UsersController {
       throw new BadRequestException('Vui lòng điền đầy đủ thông tin.');
     }
 
+    if (createUserDto.role !== 'admin' && createUserDto.role !== 'user') {
+      throw new BadRequestException('Role không tồn tại.');
+    }
+
     const existingUser = await this.usersService.findOne(
       createUserDto.username,
     );
