@@ -10,7 +10,7 @@ import {
 import { CreateUserDto } from './dto/create-user.dto';
 import { UsersService } from './users.service';
 import { User } from './interfaces/user.interface';
-import { Public } from '../auth/decorators/public.decorator';
+import { Public } from './auth/decorators/public.decorator';
 
 @Controller('auth')
 export class UsersController {
@@ -23,11 +23,6 @@ export class UsersController {
     if (!createUserDto.username || !createUserDto.password) {
       throw new BadRequestException('Vui lòng điền đầy đủ thông tin.');
     }
-
-    if (createUserDto.role !== 'admin' && createUserDto.role !== 'user') {
-      throw new BadRequestException('Role không tồn tại.');
-    }
-
     const existingUser = await this.usersService.findOne(
       createUserDto.username,
     );
