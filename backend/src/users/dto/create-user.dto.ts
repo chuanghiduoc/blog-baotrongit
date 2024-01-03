@@ -22,7 +22,11 @@ export class CreateUserDto {
 
   @IsOptional()
   @IsString()
-  @IsIn(['user', 'admin']) // Kiểm tra role chỉ có thể là 'user' hoặc 'admin'
+  @IsIn(['user', 'admin'])
   @Transform(({ value }) => (value ? value.toLowerCase() : 'user'))
   readonly role?: string;
+
+  @IsOptional()
+  @IsString()
+  readonly refresh_token?: string;
 }

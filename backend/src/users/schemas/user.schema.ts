@@ -8,4 +8,5 @@ export const UserSchema = new mongoose.Schema({
     enum: ['user', 'admin'],
     default: 'user',
   },
+  refresh_token: String,
 });
